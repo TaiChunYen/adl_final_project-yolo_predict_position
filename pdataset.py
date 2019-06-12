@@ -15,6 +15,7 @@ class customDataset(Dataset):
         self.yolo = []
         self.label = []
         self.len = 0
+        #pair = []#
 
         f = open(self.root, "r")
         jf = json.loads(f.read())
@@ -25,11 +26,19 @@ class customDataset(Dataset):
             if jf2[jf[i]['filename'][-13:-3]+'png'] != None:
                 self.yolo.append(jf[i]['output'][-4:])
                 self.label.append(jf2[jf[i]['filename'][-13:-3]+'png'][0])
+                #temp=jf[i]#
+                #temp['label']=jf2[jf[i]['filename'][-13:-3]+'png'][0]#
+                #pair.append(temp)#
 
         self.len = len(self.yolo)
         self.yolo = torch.FloatTensor(self.yolo)   
         self.label = torch.FloatTensor(self.label)
         #pdb.set_trace()
+        #with open('./pair.json','w') as f3:#
+            #pdb.set_trace()
+            #data_arr=json.dumps(pair)#
+            #f3.write(data_arr)#
+            #f3.close#
 
     def __getitem__(self, index):
         ##############################################
