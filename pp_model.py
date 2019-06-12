@@ -3,7 +3,7 @@ import torch
 class PP(torch.nn.Module):
 
     def __init__(self):
-        super(ELMo, self).__init__()
+        super(PP, self).__init__()
         self.input = torch.nn.Linear(4,512)
         self.pp = torch.nn.Linear(512,512)
         self.output = torch.nn.Linear(512,3)

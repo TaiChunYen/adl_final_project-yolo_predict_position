@@ -1,6 +1,8 @@
 from torch.utils.data.dataset import Dataset
 import os
 import json
+import torch
+import pdb
 
 class customDataset(Dataset):
     def __init__(self,root,lab_root,transform=None):
@@ -24,7 +26,10 @@ class customDataset(Dataset):
                 self.yolo.append(jf[i]['output'][-4:])
                 self.label.append(jf2[jf[i]['filename'][-13:-3]+'png'][0])
 
-        self.len = len(self.yolo)    
+        self.len = len(self.yolo)
+        self.yolo = torch.FloatTensor(self.yolo)   
+        self.label = torch.FloatTensor(self.label)
+        #pdb.set_trace()
 
     def __getitem__(self, index):
         ##############################################
