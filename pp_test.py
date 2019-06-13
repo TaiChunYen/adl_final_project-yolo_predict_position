@@ -5,7 +5,7 @@ model = PP()
 model.load_state_dict(torch.load('./model-999.pkl'))
 model.eval()
 
-inputbb = [540, 575, 644, 726]
+inputbb = [550, 599, 684, 720]
 inputbb = torch.FloatTensor(inputbb)
 
 out = model(inputbb)

@@ -1,4 +1,5 @@
 import torch
+import torch.nn.functional as F
 
 class PP(torch.nn.Module):
 
@@ -9,8 +10,8 @@ class PP(torch.nn.Module):
         self.output = torch.nn.Linear(512,3)
 
     def forward(self, bbox):
-        out = self.input(bbox)
-        out2 = self.pp(out)
+        out = F.relu(self.input(bbox))
+        out2 = F.relu(self.pp(out))
         out3 = self.output(out2)
 
         return out3
