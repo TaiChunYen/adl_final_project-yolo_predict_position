@@ -6,9 +6,7 @@ import pdb
 
 class customDataset(Dataset):
     def __init__(self,root,lab_root,transform=None):
-        ##############################################
-        ### Initialize paths, transforms, and so on
-        ##############################################
+        
         self.root = root
         self.lab_root = lab_root
         self.transform = transform
@@ -41,16 +39,10 @@ class customDataset(Dataset):
             #f3.close#
 
     def __getitem__(self, index):
-        ##############################################
-        # 1. Read from file (using numpy.fromfile, PIL.Image.open)
-        # 2. Preprocess the data (torchvision.Transform).
-        # 3. Return the data (e.g. image and label)
-        ##############################################
+        
         return self.yolo[index], self.label[index]
 
 
     def __len__(self):
-        ##############################################
-        ### Indicate the total size of the dataset
-        ##############################################
+        
         return self.len

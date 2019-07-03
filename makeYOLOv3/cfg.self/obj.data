@@ -1,0 +1,5 @@
+classes= 1
+train  = cfg.self/train.txt
+valid  = cfg.self/test.txt
+names = cfg.self/obj.names
+backup = cfg.self/weights/
